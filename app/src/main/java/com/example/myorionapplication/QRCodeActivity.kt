@@ -1,33 +1,23 @@
 package com.example.myorionapplication
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
 
-class MainActivity : AppCompatActivity() {
+class QRCodeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_qrcode)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val editText = findViewById<TextInputEditText>(R.id.phoneEditText)
-        val buttonNext = findViewById<MaterialButton>(R.id.nextButton)
 
-        buttonNext.setOnClickListener {
-            val phone = editText.text.toString() // 💡 Получаем значение прямо при нажатии
-            val intent = Intent(this, SmsActivity::class.java)
-            intent.putExtra("phoneNumber", phone)
-            startActivity(intent)
-        }
-
+        findViewById<MaterialButton>(R.id.Gotovo).setOnClickListener { finish() }
     }
 }
