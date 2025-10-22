@@ -84,6 +84,8 @@ android:layout_marginStart="16dp"
             android:layout_height="match_parent"
             android:background="@null"
             android:inputType="phone"
+            android:focusable="false"
+            android:clickable="false"
             android:textSize="18sp"
             android:text="+7" />
     </com.google.android.material.textfield.TextInputLayout>

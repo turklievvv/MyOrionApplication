@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity">
+
+    <TextView
+        android:id="@+id/textAuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Личный кабинет"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backButton"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/back_ik"
+        app:iconSize="25dp"
+        app:iconTint="#AB000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textAuth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textAuth" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logoutButton"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/logout_ik"
+        app:iconSize="25dp"
+        app:iconTint="#AB000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textAuth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textAuth" />
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="450dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:errorEnabled="true">
+
+
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="Имя"
+            android:inputType="text"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/FirstNameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="0dp"
+        app:errorEnabled="true"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameLayout">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="Фамилия"
+            android:inputType="text"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/BirthDateLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="0dp"
+        app:errorEnabled="true"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        android:clickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/birthDate"
+            android:textColor="#C3878787"
+            android:clickable="true"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="07.06.2005"
+            android:inputType="date"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/number"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="0dp"
+        app:errorEnabled="true"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:boxBackgroundMode="none"
+        app:hintEnabled="false"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FirstNameLayout">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="#C3878787"
+            android:id="@+id/numberedittext"
+            android:clickable="true"
+            android:focusable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="+7(989)123-45-67"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:hint="Пол"
+        app:layout_constraintStart_toStartOf="@+id/BirthDateLayout"
+        app:layout_constraintTop_toBottomOf="@+id/BirthDateLayout" />
+
+    <TextView
+        android:id="@+id/poltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Мужской"
+        android:textSize="19sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#C3878787"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/nameLayout"
+        app:layout_constraintStart_toStartOf="@+id/nameLayout"
+        app:layout_constraintBottom_toBottomOf="@id/nameLayout" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#C3878787"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/FirstNameLayout"
+        app:layout_constraintStart_toStartOf="@+id/FirstNameLayout"
+        app:layout_constraintBottom_toBottomOf="@id/FirstNameLayout" />
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="#C3878787"
+        app:layout_constraintEnd_toEndOf="@+id/BirthDateLayout"
+        app:layout_constraintStart_toStartOf="@+id/BirthDateLayout"
+        app:layout_constraintBottom_toBottomOf="@id/BirthDateLayout" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:background="#C3878787"
+        app:layout_constraintEnd_toEndOf="@+id/number"
+        app:layout_constraintStart_toStartOf="@+id/number"
+        app:layout_constraintBottom_toBottomOf="@id/number" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/lock_ik"
+        app:layout_constraintBottom_toBottomOf="@+id/BirthDateLayout"
+        app:layout_constraintEnd_toEndOf="@+id/BirthDateLayout"
+        app:layout_constraintTop_toTopOf="@+id/BirthDateLayout"
+        app:tint="#C3878787" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/lock_ik"
+        app:layout_constraintBottom_toBottomOf="@+id/number"
+        app:layout_constraintEnd_toEndOf="@+id/number"
+        app:layout_constraintTop_toTopOf="@+id/number"
+        app:tint="#C3878787" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/lock_ik"
+        app:layout_constraintBottom_toBottomOf="@+id/poltext"
+        app:layout_constraintEnd_toEndOf="@+id/BirthDateLayout"
+        app:layout_constraintTop_toTopOf="@+id/poltext"
+        app:tint="#C3878787" />
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveButton"
+        android:layout_width="197dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#FF5722"
+        app:cornerRadius="8dp"
+        android:text="Сохранить"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

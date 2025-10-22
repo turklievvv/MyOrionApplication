@@ -1,12 +1,14 @@
 package com.example.myorionapplication
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -26,7 +28,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var birthEditText: TextInputEditText
     private lateinit var radioGroup: RadioGroup
     private lateinit var editText: List<TextInputEditText>
-
+    private lateinit var phoneNumber: String
 
     private lateinit var button: Button
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +40,8 @@ class RegistrationActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        phoneNumber = intent.getStringExtra("phoneNumber").toString()
         button = findViewById<MaterialButton>(R.id.nextButton)
-
         nameEditText = findViewById<TextInputEditText>(R.id.name)
         firstNameEditText = findViewById<TextInputEditText>(R.id.firstName)
         birthEditText = findViewById<TextInputEditText>(R.id.birthDate)
@@ -71,7 +73,21 @@ class RegistrationActivity : AppCompatActivity() {
                 if (radioGroup.checkedRadioButtonId == -1) {
                     Toast.makeText(this, "Выберите пол", Toast.LENGTH_SHORT).show()
                 } else {
-                    startActivity(Intent(this, GalvnoeMenuActivity::class.java))
+                    val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+                    val radioButton = findViewById<RadioButton>(selectedRadioButtonId)
+
+                    startActivity(
+                        GalvnoeMenuActivity.GlavnoeMenuIntent(
+                            this,
+                            phoneNumber,
+                            nameEditText.text.toString(),
+                            firstNameEditText.text.toString(),
+                            birthEditText.text.toString(),
+                            radioButton.text.toString()
+                        )
+
+                    )
+                    finish()
                 }
             }
         }
@@ -88,26 +104,18 @@ class RegistrationActivity : AppCompatActivity() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             val datePickerDialog = DatePickerDialog(
-                this,
-                { _, selectedYear, selectedMonth, selectedDay ->
+                this, { _, selectedYear, selectedMonth, selectedDay ->
                     val formatted = String.format(
-                        "%02d.%02d.%04d",
-                        selectedDay,
-                        selectedMonth + 1,
-                        selectedYear
+                        "%02d.%02d.%04d", selectedDay, selectedMonth + 1, selectedYear
                     )
                     birthEditText.setText(formatted)
-                },
-                year, month, day
+                }, year, month, day
             )
             datePickerDialog.show()
         }
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(
-                s: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
+                s: CharSequence?, start: Int, count: Int, after: Int
             ) {
             }
 
@@ -139,9 +147,22 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun checkFormState() {
+
         val allFieldsFilled = editText.all { it.text.toString().trim().isNotEmpty() }
         val isRadioSelected = radioGroup.checkedRadioButtonId != -1
         val enableButton = allFieldsFilled && isRadioSelected
+        button.isEnabled = enableButton
+        button.isClickable = enableButton
+        button.isFocusable = enableButton
         button.setBackgroundColor(if (enableButton) Color.parseColor("#FF5722") else Color.GRAY)
+    }
+
+    companion object {
+        const val PHONE_NUMBER = "phoneNumber"
+        fun registrationIntent(context: Context, phoneNumber: String) =
+            Intent(context, RegistrationActivity::class.java).apply {
+                putExtra(PHONE_NUMBER, phoneNumber)
+
+            }
     }
 }

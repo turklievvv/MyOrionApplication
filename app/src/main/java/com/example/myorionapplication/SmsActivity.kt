@@ -1,36 +1,31 @@
 package com.example.myorionapplication
 
-import android.R.attr.button
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextLayoutInput
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
-import com.mukeshsolanki.OTP_VIEW_TYPE_BORDER
-import com.mukeshsolanki.OtpView
 
 class SmsActivity : AppCompatActivity() {
+
     private lateinit var timerText: TextView
     private lateinit var resendButton: Button
+    private lateinit var number: TextView
+    private lateinit var codeVerification: TextInputEditText
+
+    private var phoneNumber: String = ""
+    private var countDownTimer: CountDownTimer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,49 +35,41 @@ class SmsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val backButton = findViewById<MaterialButton>(R.id.backButton)
-        backButton.setOnClickListener {
-            finish()
-        }
 
-
-        val phoneNumber = intent.getStringExtra("phoneNumber")
-
-        val number = findViewById<TextView>(R.id.number)
-        number.text = "+7$phoneNumber"
+        phoneNumber = intent.getStringExtra(PHONE_NUMBER) ?: ""
 
         timerText = findViewById(R.id.timerText)
         resendButton = findViewById(R.id.resendButton)
+        number = findViewById(R.id.number)
+        codeVerification = findViewById(R.id.phoneEditText)
+
+        number.text = "+7$phoneNumber"
 
         startCountdown()
 
         resendButton.setOnClickListener {
-            resendButton.visibility = View.GONE
+            resendButton.isVisible = false
             startCountdown()
-
         }
 
-        val codeVerification = findViewById<TextInputEditText>(R.id.phoneEditText)
-        codeVerification.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        findViewById<MaterialButton>(R.id.backButton).setOnClickListener {
+            finish()
+        }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val input = s.toString()
-                if (input.length == 4) {
-                    startActivity(Intent(this@SmsActivity, RegistrationActivity::class.java))
-                }
-
+        codeVerification.doOnTextChanged { text, _, _, _ ->
+            if (text?.length == 4) {
+                startActivity(RegistrationActivity.registrationIntent(this, phoneNumber))
+                finish()
             }
-
-            override fun afterTextChanged(s: Editable?) {}
-        })
-
+        }
     }
 
     private fun startCountdown() {
-        val totalMillis = 10_000L // 30 секунд
+        countDownTimer?.cancel()
 
-        object : CountDownTimer(totalMillis, 1000) {
+        val totalMillis = 30_000L // 30 секунд
+
+        countDownTimer = object : CountDownTimer(totalMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = millisUntilFinished / 1000
                 timerText.text = "Отправить код снова через $secondsLeft секунд"
@@ -93,5 +80,20 @@ class SmsActivity : AppCompatActivity() {
                 resendButton.visibility = View.VISIBLE
             }
         }.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        countDownTimer?.cancel()
+    }
+
+    companion object {
+        const val PHONE_NUMBER = "phoneNumber"
+
+        fun smsIntent(context: Context, phoneNumber: String): Intent {
+            return Intent(context, SmsActivity::class.java).apply {
+                putExtra(PHONE_NUMBER, phoneNumber)
+            }
+        }
     }
 }
