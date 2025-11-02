@@ -83,7 +83,7 @@ class ProfileActivity : AppCompatActivity() {
         private const val FIRST_NAME = "firstName"
         private const val BIRTH_DATE = "birthDate"
         private const val POL = "pol"
-        fun ProfileActivityIntent(
+        fun getIntent(
             context: Context,
             phoneNumber: String,
             name: String,

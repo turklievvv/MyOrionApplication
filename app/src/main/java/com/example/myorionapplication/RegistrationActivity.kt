@@ -53,18 +53,19 @@ class RegistrationActivity : AppCompatActivity() {
 
             if (firstNameEditText.text.toString().isBlank()) {
                 findViewById<TextInputLayout>(R.id.FirstNameLayout).error =
-                    "Обязательное для заполнения"
+                    getString(R.string.editTextErrorText)
                 hasError = true
             }
 
             if (nameEditText.text.toString().isBlank()) {
-                findViewById<TextInputLayout>(R.id.nameLayout).error = "Обязательное для заполнения"
+                findViewById<TextInputLayout>(R.id.nameLayout).error =
+                    getString(R.string.editTextErrorText)
                 hasError = true
             }
 
             if (birthEditText.text.toString().isBlank()) {
                 findViewById<TextInputLayout>(R.id.BirthDateLayout).error =
-                    "Обязательное для заполнения"
+                    getString(R.string.editTextErrorText)
                 hasError = true
             }
 
@@ -77,7 +78,7 @@ class RegistrationActivity : AppCompatActivity() {
                     val radioButton = findViewById<RadioButton>(selectedRadioButtonId)
 
                     startActivity(
-                        GalvnoeMenuActivity.GlavnoeMenuIntent(
+                        GalvnoeMenuActivity.getIntent(
                             this,
                             phoneNumber,
                             nameEditText.text.toString(),
@@ -159,7 +160,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     companion object {
         const val PHONE_NUMBER = "phoneNumber"
-        fun registrationIntent(context: Context, phoneNumber: String) =
+        fun getIntent(context: Context, phoneNumber: String) =
             Intent(context, RegistrationActivity::class.java).apply {
                 putExtra(PHONE_NUMBER, phoneNumber)
 

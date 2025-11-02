@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:clickable="true"
+    android:elevation="4dp"
+    android:focusable="true"
+    tools:ignore="MissingConstraints"
+    android:background="@android:color/transparent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="116dp"
+        android:background="@android:color/transparent">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/orion_svj"
+            android:id="@+id/iconNotification"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+
+            />
+
+
+        <TextView
+            android:id="@+id/titleTextNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Дарим 200 баллов"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iconNotification"
+            app:layout_constraintTop_toTopOf="@id/iconNotification"
+
+            />
+
+        <TextView
+            android:id="@+id/descriptionTextNotification"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="200 баллов на счет при заказе доставки через приложение"
+            android:textSize="13sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/titleTextNotification"
+            app:layout_constraintTop_toBottomOf="@id/titleTextNotification" />
+
+        <TextView
+            android:id="@+id/dateNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Сегодня"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTextNotification"
+            app:layout_constraintStart_toStartOf="@id/descriptionTextNotification"
+            android:layout_marginTop="10dp"
+            android:textSize="11sp"
+            android:textColor="#5F000000"/>
+        <ImageView
+            android:id="@+id/newNotification"
+            app:layout_constraintTop_toTopOf="@id/titleTextNotification"
+            app:layout_constraintStart_toEndOf="@id/titleTextNotification"
+            app:layout_constraintBottom_toBottomOf="@id/titleTextNotification"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/green_ellipse"
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MyOrionApplication</string>
+    <string name="editTextErrorText">Введите корректный номер</string>
+    <string name="timerText">Отправить код снова через %1$d секунд</string>
+    <string name="bonuses">"Это твои накопленные баллы за покупки"</string>
 </resources>

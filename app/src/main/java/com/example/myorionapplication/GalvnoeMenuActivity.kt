@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.myorionapplication.Notifications.NotificationsActvity
 import com.example.myorionapplication.databinding.ActivityGalvnoeMenuBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -44,7 +45,7 @@ class GalvnoeMenuActivity : AppCompatActivity() {
 
         binding.faq.setOnClickListener {
             Snackbar.make(
-                binding.faq, "Это твои накопленные баллы за покупки", Snackbar.LENGTH_SHORT
+                binding.faq, getString(R.string.bonuses), Snackbar.LENGTH_SHORT
             ).show()
         }
         binding.pointsPayButton.setOnClickListener {
@@ -57,7 +58,7 @@ class GalvnoeMenuActivity : AppCompatActivity() {
 
         binding.profileButton.setOnClickListener {
             profileLauncher.launch(
-                ProfileActivity.ProfileActivityIntent(
+                ProfileActivity.getIntent(
                     this,
                     phoneNumber.toString(),
                     name.toString(),
@@ -82,7 +83,7 @@ class GalvnoeMenuActivity : AppCompatActivity() {
         private const val FIRST_NAME = "firstName"
         private const val BIRTH_DATE = "birthDate"
         private const val POL = "pol"
-        fun GlavnoeMenuIntent(
+        fun getIntent(
             context: Context,
             phoneNumber: String,
             name: String,

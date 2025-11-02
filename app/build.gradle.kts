@@ -50,4 +50,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation ("com.github.mukeshsolanki.android-otpview-pinview:otpview-compose:3.1.0")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
 }

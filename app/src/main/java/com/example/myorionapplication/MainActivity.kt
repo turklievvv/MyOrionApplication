@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity() {
         val buttonNext = findViewById<MaterialButton>(R.id.nextButton)
 
         buttonNext.setOnClickListener {
-            val phone = editText.text?.toString()?.trim() ?: ""
+            val phone = editText.text?.toString()?.trim().orEmpty()
             if (phone.length == 10) {
-                startActivity(SmsActivity.smsIntent(this, phone))
+                startActivity(SmsActivity.getIntent(this, phone))
             } else {
-                editText.error = "Введите корректный номер"
+                editText.error = getString(R.string.editTextErrorText)
             }
         }
     }

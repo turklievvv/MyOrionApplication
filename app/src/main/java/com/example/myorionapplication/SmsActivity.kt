@@ -58,7 +58,7 @@ class SmsActivity : AppCompatActivity() {
 
         codeVerification.doOnTextChanged { text, _, _, _ ->
             if (text?.length == 4) {
-                startActivity(RegistrationActivity.registrationIntent(this, phoneNumber))
+                startActivity(RegistrationActivity.getIntent(this, phoneNumber))
                 finish()
             }
         }
@@ -72,25 +72,25 @@ class SmsActivity : AppCompatActivity() {
         countDownTimer = object : CountDownTimer(totalMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsLeft = millisUntilFinished / 1000
-                timerText.text = "Отправить код снова через $secondsLeft секунд"
+                timerText.text = getString(R.string.timerText,secondsLeft)
             }
 
             override fun onFinish() {
                 timerText.text = ""
-                resendButton.visibility = View.VISIBLE
+                resendButton.isVisible = true
             }
         }.start()
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         countDownTimer?.cancel()
+        super.onDestroy()
     }
 
     companion object {
-        const val PHONE_NUMBER = "phoneNumber"
+        private const val PHONE_NUMBER = "phoneNumber"
 
-        fun smsIntent(context: Context, phoneNumber: String): Intent {
+        fun getIntent(context: Context, phoneNumber: String): Intent {
             return Intent(context, SmsActivity::class.java).apply {
                 putExtra(PHONE_NUMBER, phoneNumber)
             }
