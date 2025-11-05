@@ -62,24 +62,18 @@ class SmsActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+
     }
 
     private fun startCountdown() {
-        countDownTimer?.cancel()
-
-        val totalMillis = 30_000L // 30 секунд
-
-        countDownTimer = object : CountDownTimer(totalMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                val secondsLeft = millisUntilFinished / 1000
-                timerText.text = getString(R.string.timerText,secondsLeft)
-            }
-
-            override fun onFinish() {
-                timerText.text = ""
-                resendButton.isVisible = true
-            }
-        }.start()
+        lifecycle.startCountDownTimer(
+            startTime = 60_000L,
+            period = 1000L,
+            start = { time: Long -> resendButton.isVisible = false },
+            end = { time: Long -> resendButton.isVisible = true},
+            tick = { time: Long -> }
+        )
     }
 
     override fun onDestroy() {
