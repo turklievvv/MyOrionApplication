@@ -7,17 +7,17 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 
-class QRCodeActivity : AppCompatActivity() {
+class BonusSystemInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_qrcode)
+        setContentView(R.layout.activity_bonus_system_info)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val buttonGotovo = findViewById<MaterialButton>(R.id.Gotovo)
-        buttonGotovo.setOnClickListener { finish() }
+        val backButton = findViewById<MaterialButton>(R.id.backButton)
+        backButton.setOnClickListener { finish() }
     }
 }

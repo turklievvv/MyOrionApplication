@@ -23,14 +23,15 @@ import com.google.android.material.textfield.TextInputLayout
 import java.util.Calendar
 
 class RegistrationActivity : AppCompatActivity() {
+
     private lateinit var nameEditText: TextInputEditText
     private lateinit var firstNameEditText: TextInputEditText
     private lateinit var birthEditText: TextInputEditText
     private lateinit var radioGroup: RadioGroup
     private lateinit var editText: List<TextInputEditText>
     private lateinit var phoneNumber: String
-
     private lateinit var button: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,7 +41,7 @@ class RegistrationActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        phoneNumber = intent.getStringExtra("phoneNumber").toString()
+        phoneNumber = intent.getStringExtra("phoneNumber").toString().orEmpty()
         button = findViewById<MaterialButton>(R.id.nextButton)
         nameEditText = findViewById<TextInputEditText>(R.id.name)
         firstNameEditText = findViewById<TextInputEditText>(R.id.firstName)

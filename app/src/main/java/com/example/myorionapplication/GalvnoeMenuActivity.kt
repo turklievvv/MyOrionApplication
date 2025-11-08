@@ -2,17 +2,19 @@ package com.example.myorionapplication
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.inputmethod.InputBinding
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myorionapplication.Notifications.NotificationsActvity
 import com.example.myorionapplication.databinding.ActivityGalvnoeMenuBinding
 import com.google.android.material.snackbar.Snackbar
+import androidx.core.net.toUri
+import com.example.myorionapplication.PayStories.PayStoryActivity
+
 
 class GalvnoeMenuActivity : AppCompatActivity() {
     lateinit var binding: ActivityGalvnoeMenuBinding
@@ -31,7 +33,6 @@ class GalvnoeMenuActivity : AppCompatActivity() {
         var firstname = intent.getStringExtra("firstName")
         var birthDate = intent.getStringExtra("birthDate")
         val pol = intent.getStringExtra("pol")
-
         val profileLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
@@ -41,12 +42,43 @@ class GalvnoeMenuActivity : AppCompatActivity() {
                 firstname = data?.getStringExtra("newFirstName")
             }
         }
+        binding.instRestoran1.setOnClickListener {
+            val url = "https://www.instagram.com/restaurant_pirosmani/"
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            startActivity(intent)
+        }
+        binding.instRestoran2.setOnClickListener {
+            val url = "https://www.instagram.com/resto.quadrat/"
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            startActivity(intent)
+        }
+        binding.instRestoran3.setOnClickListener {
+            val url = "https://www.instagram.com/dolce.salato/"
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            startActivity(intent)
+        }
+        binding.callRestoranButton1.setOnClickListener {
+            val phoneNumber = "tel:+79634113232"
+            val intent = Intent(Intent.ACTION_DIAL, phoneNumber.toUri())
+            startActivity(intent)
+        }
+        binding.callRestoranButton2.setOnClickListener {
+            val phoneNumber = "tel:+79187770909"
+            val intent = Intent(Intent.ACTION_DIAL, phoneNumber.toUri())
+            startActivity(intent)
+        }
+        binding.callRestoranButton3.setOnClickListener {
+            val phoneNumber = "tel:+79640118668"
+            val intent = Intent(Intent.ACTION_DIAL, phoneNumber.toUri())
+            startActivity(intent)
+        }
 
 
+        binding.lastPaysButton.setOnClickListener {
+            startActivity(Intent(this, PayStoryActivity::class.java))
+        }
         binding.faq.setOnClickListener {
-            Snackbar.make(
-                binding.faq, getString(R.string.bonuses), Snackbar.LENGTH_SHORT
-            ).show()
+            startActivity(Intent(this, BonusSystemInfoActivity::class.java))
         }
         binding.pointsPayButton.setOnClickListener {
             startActivity(

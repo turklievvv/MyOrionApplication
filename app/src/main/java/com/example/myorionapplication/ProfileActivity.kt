@@ -90,14 +90,13 @@ class ProfileActivity : AppCompatActivity() {
             firstName: String,
             birthDate: String,
             pol: String
-        ) =
-            Intent(context, ProfileActivity::class.java).apply {
-                putExtra(PHONE_NUMBER, phoneNumber)
-                putExtra(NAME, name)
-                putExtra(FIRST_NAME, firstName)
-                putExtra(BIRTH_DATE, birthDate)
-                putExtra(POL, pol)
-            }
+        ) = Intent(context, ProfileActivity::class.java).apply {
+            putExtra(PHONE_NUMBER, phoneNumber)
+            putExtra(NAME, name)
+            putExtra(FIRST_NAME, firstName)
+            putExtra(BIRTH_DATE, birthDate)
+            putExtra(POL, pol)
+        }
 
     }
 

@@ -66,7 +66,8 @@ class NotificationAdapter(
                         currentNotification.text.toString(),
                         "Адрес Усть-Джегута ул.Курортная 217"
                     )
-                    holder.newNotification.isVisible = false                }
+                    holder.newNotification.isVisible = false
+                }
 
                 "Пицца в подарок" -> {
                     dialogNotification(
@@ -75,7 +76,8 @@ class NotificationAdapter(
                         currentNotification.text.toString(),
                         "Для того, чтобы участвовать в акции нужно сделать заказ на сумму не менее 600 ₽ в заведении Бакари."
                     )
-                    holder.newNotification.isVisible = false                }
+                    holder.newNotification.isVisible = false
+                }
 
                 "MMC пиред" -> {
                     dialogNotification(
@@ -84,7 +86,9 @@ class NotificationAdapter(
                         currentNotification.text.toString(),
                         "Не отступать и не сдаваться"
                     )
-                    holder.newNotification.isVisible = false                }
+                    holder.newNotification.isVisible = false
+                }
+
                 "Роллы по 250Р" -> {
                     dialogNotification(
                         context,
@@ -92,7 +96,9 @@ class NotificationAdapter(
                         currentNotification.text.toString(),
                         "Можете заказать у нас в приложении"
                     )
-                    holder.newNotification.isVisible = false                }
+                    holder.newNotification.isVisible = false
+                }
+
                 "Дарим 200 баллов" -> {
                     dialogNotification(
                         context,
@@ -100,7 +106,9 @@ class NotificationAdapter(
                         currentNotification.text.toString(),
                         "Можете заказать у нас в приложении"
                     )
-                    holder.newNotification.isVisible = false                }
+                    holder.newNotification.isVisible = false
+                }
+
                 "Дарим 3000 бонусов!" -> {
                     dialogNotification(
                         context,
@@ -108,8 +116,8 @@ class NotificationAdapter(
                         currentNotification.text.toString(),
                         "Можете заказать у нас в приложении"
                     )
-                    holder.newNotification.isVisible = false                }
-
+                    holder.newNotification.isVisible = false
+                }
 
 
             }

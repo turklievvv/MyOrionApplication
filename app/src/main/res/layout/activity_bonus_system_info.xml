@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Notifications.NotificationsActvity">
+
+    <TextView
+        android:id="@+id/textAuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Бонусная система"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backButton"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/back_ik"
+        app:iconSize="25dp"
+        app:iconTint="#AB000000"
+        app:layout_constraintBottom_toBottomOf="@+id/textAuth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textAuth" />
+
+    <ImageView
+        android:id="@+id/moneyBagPng"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/money_bag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textAuth" />
+
+    <TextView
+        android:id="@+id/kopiteBonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Копите баллы"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/moneyBagPng"
+        app:layout_constraintTop_toBottomOf="@id/moneyBagPng" />
+
+    <TextView
+        android:id="@+id/moneyText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="10% от счета в заведениях «‎Orion group»"
+        app:layout_constraintStart_toStartOf="@id/kopiteBonus"
+        app:layout_constraintTop_toBottomOf="@id/kopiteBonus" />
+
+    <TextView
+        android:id="@+id/moneyText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20% от счета в день рождения и две недели после"
+        app:layout_constraintStart_toStartOf="@id/moneyText1"
+        app:layout_constraintTop_toBottomOf="@id/moneyText1" />
+
+    <TextView
+        android:id="@+id/moneyText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15% от счета за заказы с собой"
+        app:layout_constraintStart_toStartOf="@id/moneyText2"
+        app:layout_constraintTop_toBottomOf="@id/moneyText2" />
+
+    <ImageView
+        android:id="@+id/coffePng"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/coffee"
+        app:layout_constraintStart_toStartOf="@id/moneyBagPng"
+        app:layout_constraintTop_toBottomOf="@id/moneyText3" />
+
+    <TextView
+        android:id="@+id/payBonuses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Оплачивайте баллами"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/coffePng"
+        app:layout_constraintTop_toBottomOf="@id/coffePng" />
+
+    <TextView
+        android:id="@+id/coffeText1"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Используйте баллы для получения скидки до 50% от суммы заказа."
+        app:layout_constraintStart_toStartOf="@id/payBonuses"
+        app:layout_constraintTop_toBottomOf="@id/payBonuses" />
+
+    <ImageView
+        android:id="@+id/bonusRubblePng"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ball_rubbl"
+        app:layout_constraintStart_toStartOf="@id/coffePng"
+        app:layout_constraintTop_toBottomOf="@id/coffeText1"
+        />
+    <TextView
+        android:id="@+id/ballRubbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Оплачивайте баллами"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/bonusRubblePng"
+        app:layout_constraintTop_toBottomOf="@id/bonusRubblePng"
+        />
+    <TextView
+        android:id="@+id/bonusRubbleText"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Например, если на вашей карте собралось 200 баллов, и вы не знаете сколько это, то ответ
+очевиден — 200 рублей."
+        app:layout_constraintStart_toStartOf="@id/ballRubbl"
+        app:layout_constraintTop_toBottomOf="@id/ballRubbl" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -115,51 +115,609 @@
             android:id="@+id/storyPay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/imageView5"
-            app:layout_constraintStart_toStartOf="@id/imageView5"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:text="Последние платежи"
+            android:textColor="@color/black"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"/>
+            app:layout_constraintStart_toStartOf="@id/imageView5"
+            app:layout_constraintTop_toBottomOf="@id/imageView5" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/firstLastPay"
             android:layout_width="match_parent"
             android:layout_height="67dp"
-            app:layout_constraintTop_toBottomOf="@id/storyPay"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="6dp"
             app:layout_constraintStart_toStartOf="@id/storyPay"
-            >
+            app:layout_constraintTop_toBottomOf="@id/storyPay">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
 
-            <ImageView
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/iconCard1"
-                android:layout_marginStart="20dp"
-                android:layout_width="43dp"
-                android:layout_height="43dp"
-                android:src="@drawable/orion_svj"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Бакари 800р"
-                app:layout_constraintStart_toEndOf="@id/iconCard1"
-                app:layout_constraintTop_toTopOf="@id/iconCard1"
-                android:layout_marginStart="20dp"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                />
+                <ImageView
+                    android:id="@+id/firstIconLastPay"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/bakari"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/firstTitleTextLastPays"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Бакари 800р"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/firstIconLastPay"
+                    app:layout_constraintTop_toTopOf="@id/firstIconLastPay" />
+
+                <TextView
+                    android:id="@+id/firstDateLastPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="12 октября"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="@id/firstTitleTextLastPays"
+                    app:layout_constraintTop_toBottomOf="@id/firstTitleTextLastPays" />
+
+                <TextView
+                    android:id="@+id/firstBonus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="+120"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/firstMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="+120"
+                    android:textColor="@color/red"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/secondLastPay"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintStart_toStartOf="@id/firstLastPay"
+            app:layout_constraintTop_toBottomOf="@id/firstLastPay">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/secondIconLastPay"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/dolce_salato"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/secondTitleTextLastPays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Dolce Salato 2300р"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/secondIconLastPay"
+                    app:layout_constraintTop_toTopOf="@id/secondIconLastPay" />
+
+                <TextView
+                    android:id="@+id/secondDateLastPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="2 октября"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="@id/secondTitleTextLastPays"
+                    app:layout_constraintTop_toBottomOf="@id/secondTitleTextLastPays" />
+
+                <TextView
+                    android:id="@+id/secondBonus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="+310"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/secondMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="-710"
+                    android:textColor="@color/red"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/thirdLastPay"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintStart_toStartOf="@id/secondLastPay"
+            app:layout_constraintTop_toBottomOf="@id/secondLastPay">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/thirdIconLastPay"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/pirosmani"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/thirdTitleTextLastPays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Пиросмани 1500р"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/thirdIconLastPay"
+                    app:layout_constraintTop_toTopOf="@id/thirdIconLastPay" />
+
+                <TextView
+                    android:id="@+id/thirdDateLastPay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="2 октября"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="@id/thirdTitleTextLastPays"
+                    app:layout_constraintTop_toBottomOf="@id/thirdTitleTextLastPays" />
+
+                <TextView
+                    android:id="@+id/thirdBonus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="+310"
+                    android:textColor="@color/green"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/thirdMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="-710"
+                    android:textColor="@color/red"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/lastPaysButton"
+            android:layout_width="197dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="100dp"
+            android:backgroundTint="#FF5722"
+            android:text="История платежей"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/thirdLastPay" />
+
+        <TextView
+            android:id="@+id/ourRestorans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Наши заведения"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/imageView5"
+            app:layout_constraintTop_toBottomOf="@id/lastPaysButton" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/restoran1"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintTop_toBottomOf="@id/ourRestorans">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/restoranImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pirosmani_big_picture"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/nameRestoran1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Пиросмани"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/restoranImage1" />
+
+                <TextView
+                    android:id="@+id/descriptionRestoran1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Грузинская кухня"
+                    app:layout_constraintStart_toStartOf="@id/nameRestoran1"
+                    app:layout_constraintTop_toBottomOf="@id/nameRestoran1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callRestoranButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#FF5722"
+                    android:text="Позвонить"
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="@id/descriptionRestoran1"
+                    app:layout_constraintEnd_toStartOf="@id/instRestoran1"
+                    app:layout_constraintTop_toTopOf="@id/nameRestoran1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/instRestoran1"
+                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/inst"
+                    app:iconSize="25dp"
+                    app:iconTint="#FF5722"
+                    app:strokeWidth="0.5dp"
+                    app:layout_constraintBottom_toBottomOf="@id/descriptionRestoran1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/nameRestoran1" />
+
+                <ImageView
+                    android:id="@+id/timeIcon1"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/time"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/nameRestoran1"
+                    android:layout_marginBottom="10dp"
+                    />
+                <TextView
+                    android:id="@+id/timeRestoran1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/timeIcon1"
+                    app:layout_constraintBottom_toBottomOf="@id/timeIcon1"
+                    app:layout_constraintStart_toEndOf="@id/timeIcon1"
+                    android:layout_marginStart="5dp"
+                    android:text="12:00 - 00:00" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/geolocation"
+                    app:layout_constraintTop_toTopOf="@id/timeIcon1"
+                    app:layout_constraintStart_toEndOf="@id/timeRestoran1"
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/geoIcon1"
+                    />
+                <TextView
+                    android:id="@+id/adressRestoran1"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Кочкарова ,21"
+                    app:layout_constraintStart_toEndOf="@id/geoIcon1"
+                    app:layout_constraintTop_toTopOf="@id/timeRestoran1"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/restoran2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintTop_toBottomOf="@id/restoran1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/restoranImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bakari_big"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/nameRestoran2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Бакари"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/restoranImage2" />
+
+                <TextView
+                    android:id="@+id/descriptionRestoran2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Грузинская кухня"
+                    app:layout_constraintStart_toStartOf="@id/nameRestoran2"
+                    app:layout_constraintTop_toBottomOf="@id/nameRestoran2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callRestoranButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#FF5722"
+                    android:text="Позвонить"
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="@id/descriptionRestoran2"
+                    app:layout_constraintEnd_toStartOf="@id/instRestoran2"
+                    app:layout_constraintTop_toTopOf="@id/nameRestoran2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/instRestoran2"
+                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/inst"
+                    app:iconSize="25dp"
+                    app:iconTint="#FF5722"
+                    app:strokeWidth="0.5dp"
+                    app:layout_constraintBottom_toBottomOf="@id/descriptionRestoran2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/nameRestoran2" />
+
+                <ImageView
+                    android:id="@+id/timeIcon2"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/time"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/nameRestoran2"
+                    android:layout_marginBottom="10dp"
+                    />
+                <TextView
+                    android:id="@+id/timeRestoran2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/timeIcon2"
+                    app:layout_constraintBottom_toBottomOf="@id/timeIcon2"
+                    app:layout_constraintStart_toEndOf="@id/timeIcon2"
+                    android:layout_marginStart="5dp"
+                    android:text="08:00 - 23:00" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/geolocation"
+                    app:layout_constraintTop_toTopOf="@id/timeIcon2"
+                    app:layout_constraintStart_toEndOf="@id/timeRestoran2"
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/geoIcon2"
+                    />
+                <TextView
+                    android:id="@+id/adressRestoran2"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Центральная ,1"
+                    app:layout_constraintStart_toEndOf="@id/geoIcon2"
+                    app:layout_constraintTop_toTopOf="@id/timeRestoran2"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintTop_toBottomOf="@id/restoran2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/restoranImage3"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/dolce_salato_big"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/nameRestoran3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Dolce Salato"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/restoranImage3" />
+
+                <TextView
+                    android:id="@+id/descriptionRestoran3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Европейская кухня"
+                    app:layout_constraintStart_toStartOf="@id/nameRestoran3"
+                    app:layout_constraintTop_toBottomOf="@id/nameRestoran3" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callRestoranButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#FF5722"
+                    android:text="Позвонить"
+                    android:textSize="12sp"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="@id/descriptionRestoran3"
+                    app:layout_constraintEnd_toStartOf="@id/instRestoran3"
+                    app:layout_constraintTop_toTopOf="@id/nameRestoran3" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/instRestoran3"
+                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/inst"
+                    app:iconSize="25dp"
+                    app:iconTint="#FF5722"
+                    app:strokeWidth="0.5dp"
+                    app:layout_constraintBottom_toBottomOf="@id/descriptionRestoran3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/nameRestoran3" />
+
+                <ImageView
+                    android:id="@+id/timeIcon3"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/time"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/nameRestoran3"
+                    android:layout_marginBottom="10dp"
+                    />
+                <TextView
+                    android:id="@+id/timeRestoran3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/timeIcon3"
+                    app:layout_constraintBottom_toBottomOf="@id/timeIcon3"
+                    app:layout_constraintStart_toEndOf="@id/timeIcon3"
+                    android:layout_marginStart="5dp"
+                    android:text="08:00 - 23:00" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/geolocation"
+                    app:layout_constraintTop_toTopOf="@id/timeIcon3"
+                    app:layout_constraintStart_toEndOf="@id/timeRestoran3"
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/geoIcon3"
+                    />
+                <TextView
+                    android:id="@+id/adressRestoran3"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Гамзатова ,117"
+                    app:layout_constraintStart_toEndOf="@id/geoIcon3"
+                    app:layout_constraintTop_toTopOf="@id/timeRestoran3"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

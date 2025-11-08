@@ -12,6 +12,7 @@ import com.example.myorionapplication.R
 import com.example.myorionapplication.module.Notification
 
 class NotificationsActvity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,7 +22,8 @@ class NotificationsActvity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        findViewById<Button>(R.id.backButton).setOnClickListener { finish() }
+        var backButton = findViewById<Button>(R.id.backButton)
+        backButton.setOnClickListener { finish() }
 
 
         val notificationList = mutableListOf<Notification>(
@@ -75,7 +77,7 @@ class NotificationsActvity : AppCompatActivity() {
                 newNotification = true
             ),
 
-        )
+            )
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewNotification)
         recyclerView.layoutManager = LinearLayoutManager(this)
