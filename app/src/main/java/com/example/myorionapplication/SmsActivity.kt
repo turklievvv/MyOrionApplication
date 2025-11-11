@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -62,30 +63,28 @@ class SmsActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+
     }
 
-    private fun startCountdown() {
-        countDownTimer?.cancel()
-
-        val totalMillis = 30_000L // 30 секунд
-
-        countDownTimer = object : CountDownTimer(totalMillis, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                val secondsLeft = millisUntilFinished / 1000
-                timerText.text = getString(R.string.timerText,secondsLeft)
-            }
-
-            override fun onFinish() {
-                timerText.text = ""
+    private fun startCountdown(){
+        lifecycleScope.startCountDownTimer(
+            startTime = 60_000L,
+            period = 1000L,
+            start = {
+                resendButton.isVisible = false
+            },
+            tick = { time ->
+                val secondsLeft = time / 1000
+                timerText.text = "Отправить повторно через ${secondsLeft}s"
+            },
+            end = {
                 resendButton.isVisible = true
+                timerText.text = ""
             }
-        }.start()
+        )
     }
 
-    override fun onDestroy() {
-        countDownTimer?.cancel()
-        super.onDestroy()
-    }
 
     companion object {
         private const val PHONE_NUMBER = "phoneNumber"
