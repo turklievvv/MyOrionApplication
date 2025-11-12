@@ -36,11 +36,56 @@
         app:layout_constraintBottom_toBottomOf="@+id/textAuth"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textAuth" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/notificationsBanner"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFF5F5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textAuth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/info_black"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                app:tint="#E53935" />
+
+            <TextView
+                android:text="У вас отключены уведомления. Чтобы получать уведомления о начислениях включите уведомления в настройках телефона."
+                android:textColor="#E53935"
+                android:textSize="14sp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="30dp"
+            android:id="@+id/enableNotification"
+            android:text="Включить уведомления"
+            android:textColor="#7E7E7E"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textAuth"
+        app:layout_constraintTop_toBottomOf="@id/notificationsBanner"
         android:layout_marginTop="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

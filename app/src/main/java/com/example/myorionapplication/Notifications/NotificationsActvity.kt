@@ -1,15 +1,31 @@
 package com.example.myorionapplication.Notifications
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myorionapplication.R
 import com.example.myorionapplication.module.Notification
+
+lateinit var notificationBanner: LinearLayout
+lateinit var enableNotification: TextView
 
 class NotificationsActvity : AppCompatActivity() {
 
@@ -22,9 +38,25 @@ class NotificationsActvity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        var backButton = findViewById<Button>(R.id.backButton)
-        backButton.setOnClickListener { finish() }
+        notificationBanner = findViewById<LinearLayout>(R.id.notificationsBanner)
+        enableNotification = findViewById<TextView>(R.id.enableNotification)
+        findViewById<Button>(R.id.backButton).setOnClickListener { finish() }
 
+
+        if (areNotificationsEnabled()) {
+            notificationBanner.visibility = View.GONE
+        } else {
+            notificationBanner.visibility = View.VISIBLE
+        }
+
+        // Клик на "Включить уведомления"
+        enableNotification.setOnClickListener {
+            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+            }
+            startActivity(intent)
+
+        }
 
         val notificationList = mutableListOf<Notification>(
             Notification(
@@ -83,5 +115,40 @@ class NotificationsActvity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = NotificationAdapter(notificationList, this)
 
+        checkAndRequestNotificationPermission()
+
+
     }
+    private fun areNotificationsEnabled(): Boolean {
+        val manager = NotificationManagerCompat.from(this)
+        return manager.areNotificationsEnabled()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (areNotificationsEnabled()) {
+            notificationBanner.isVisible = false
+        } else {
+            notificationBanner.isVisible = true
+        }
+    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(this, "Уведомления включены", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Уведомления отключены", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    private fun checkAndRequestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // API 33+
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
+
 }
