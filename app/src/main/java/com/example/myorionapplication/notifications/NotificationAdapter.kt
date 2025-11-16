@@ -1,10 +1,7 @@
-package com.example.myorionapplication.Notifications
+package com.example.myorionapplication.notifications
 
 
-import android.accessibilityservice.GestureDescription
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +11,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myorionapplication.R
 import com.example.myorionapplication.module.Notification
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
-import com.example.myorionapplication.MainActivity
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
 
 class NotificationAdapter(
     private val notificationList: List<Notification>,

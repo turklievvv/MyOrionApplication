@@ -17,7 +17,6 @@ class QRCodeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val buttonGotovo = findViewById<MaterialButton>(R.id.Gotovo)
-        buttonGotovo.setOnClickListener { finish() }
+        findViewById<MaterialButton>(R.id.Gotovo).setOnClickListener { finish() }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.myorionapplication.PayStories
+package com.example.myorionapplication.payStories
 
 import android.content.Context
 import android.content.Intent
@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myorionapplication.R
 import com.example.myorionapplication.RateRestoranActivity
 import com.example.myorionapplication.module.PayStory
-import com.google.android.material.button.MaterialButton
 
 class PayStoryAdapter(
     private val payStoryList: List<PayStory>, private val context: Context
@@ -41,7 +39,6 @@ class PayStoryAdapter(
             context.startActivity(Intent(context, RateRestoranActivity::class.java))
             holder.newPay.isVisible = false
         }
-
     }
 
     override fun getItemCount(): Int {
@@ -55,7 +52,5 @@ class PayStoryAdapter(
         val newPay: ImageView = payStoryView.findViewById(R.id.newPay)
         val bonusPay: TextView = payStoryView.findViewById(R.id.bonusPay)
         val minusBonusPay: TextView = payStoryView.findViewById(R.id.minusBonusPay)
-
-
     }
 }

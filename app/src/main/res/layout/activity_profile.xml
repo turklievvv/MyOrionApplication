@@ -47,7 +47,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameLayout"
+        android:id="@+id/firstNameLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name"
+            android:id="@+id/firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -77,7 +77,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/FirstNameLayout"
+        android:id="@+id/lastNameLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="0dp"
         app:errorEnabled="true"
@@ -88,11 +88,11 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/firstNameLayout">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/firstName"
+            android:id="@+id/lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -144,7 +144,7 @@
         android:focusable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FirstNameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/lastNameLayout">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -186,18 +186,18 @@
         android:layout_height="1dp"
         android:background="#C3878787"
         android:layout_marginBottom="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/nameLayout"
-        app:layout_constraintStart_toStartOf="@+id/nameLayout"
-        app:layout_constraintBottom_toBottomOf="@id/nameLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/firstNameLayout"
+        app:layout_constraintStart_toStartOf="@+id/firstNameLayout"
+        app:layout_constraintBottom_toBottomOf="@id/firstNameLayout" />
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="#C3878787"
         android:layout_marginBottom="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/FirstNameLayout"
-        app:layout_constraintStart_toStartOf="@+id/FirstNameLayout"
-        app:layout_constraintBottom_toBottomOf="@id/FirstNameLayout" />
+        app:layout_constraintEnd_toEndOf="@+id/lastNameLayout"
+        app:layout_constraintStart_toStartOf="@+id/lastNameLayout"
+        app:layout_constraintBottom_toBottomOf="@id/lastNameLayout" />
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="0dp"

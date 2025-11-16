@@ -2,5 +2,21 @@
     <string name="app_name">MyOrionApplication</string>
     <string name="editTextErrorText">Введите корректный номер</string>
     <string name="timerText">Отправить код снова через %1$d секунд</string>
-    <string name="bonuses">"Это твои накопленные баллы за покупки"</string>
+    <string name="bonuses">Это твои накопленные баллы за покупки</string>
+    <string name="notificationEnabled">Уведомления включены</string>
+    <string name="notificationNotEnabled">Уведомления отключены</string>
+    <string name="instPirosmani">https://www.instagram.com/restaurant_pirosmani/</string>
+    <string name="instBakari">https://www.instagram.com/resto.quadrat/</string>
+    <string name="instDolceVito">https://www.instagram.com/dolce.salato/</string>
+    <string name="phonePirsomani">tel:+79634113232</string>
+    <string name="phoneBakari">tel:+79187770909</string>
+    <string name="phoneDolceVito">tel:+79640118668</string>
+    <string name="chooseGender">Выберите пол</string>
+    <string name="thanksForRate">Спасибо за отзыв</string>
+    <string name="excellent">Отлично</string>
+    <string name="good">Хорошо</string>
+    <string name="notBad">Неплохо</string>
+    <string name="bad">Плохо</string>
+    <string name="terrible">Ужасно</string>
+    <string name="rateUs">Оцените нас</string>
 </resources>

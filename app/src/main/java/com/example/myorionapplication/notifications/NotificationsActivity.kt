@@ -1,4 +1,4 @@
-package com.example.myorionapplication.Notifications
+package com.example.myorionapplication.notifications
 
 import android.Manifest
 import android.content.Intent
@@ -23,11 +23,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myorionapplication.R
 import com.example.myorionapplication.module.Notification
+import com.example.myorionapplication.module.NotificationRepository
 
-lateinit var notificationBanner: LinearLayout
-lateinit var enableNotification: TextView
 
 class NotificationsActvity : AppCompatActivity() {
+
+    lateinit var notificationBanner: LinearLayout
+    lateinit var enableNotification: TextView
+    lateinit var recyclerView: RecyclerView
+    lateinit var notificationList : List<Notification>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +45,7 @@ class NotificationsActvity : AppCompatActivity() {
         notificationBanner = findViewById<LinearLayout>(R.id.notificationsBanner)
         enableNotification = findViewById<TextView>(R.id.enableNotification)
         findViewById<Button>(R.id.backButton).setOnClickListener { finish() }
-
+        notificationList = NotificationRepository.getNotifications()
 
         if (areNotificationsEnabled()) {
             notificationBanner.visibility = View.GONE
@@ -49,76 +53,22 @@ class NotificationsActvity : AppCompatActivity() {
             notificationBanner.visibility = View.VISIBLE
         }
 
-        // Клик на "Включить уведомления"
         enableNotification.setOnClickListener {
             val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
                 putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
             }
             startActivity(intent)
-
         }
 
-        val notificationList = mutableListOf<Notification>(
-            Notification(
-                titleText = "Дарим 3000 бонусов!!!",
-                text = "Дарим 3000 бонусов за ваш первый заказ через доставку",
-                photo = R.drawable.orion_svj,
-                data = "Сегодня",
-                newNotification = true
-            ),
-            Notification(
-                titleText = "Отрытие нового ресторана",
-                text = "20 апреля приглашаем всех на открытие нового ресторана в Черкесске",
-                photo = R.drawable.info_black,
-                data = "20 октября",
-                newNotification = true
-            ),
-            Notification(
-                titleText = "Пицца в подарок",
-                text = "12,13,14 котября при заказе в Усть-Джегуту на сумму от 600Р пицца бесплатна",
-                photo = R.drawable.orion_svj,
-                data = "10 октября",
-                newNotification = true
-            ),
-            Notification(
-                titleText = "MMC пиред",
-                text = "Присоеденяйтесь к нам в MMC",
-                photo = R.drawable.android_black,
-                data = "5 июня",
-                newNotification = true
-            ),
-            Notification(
-                titleText = "Роллы по 250Р",
-                text = "Весь октябрь в Dolce Salato роллы по 250Р",
-                photo = R.drawable.orion_svj,
-                data = "2 октября",
-                newNotification = true
-            ),
-            Notification(
-                titleText = "Дарим 200 баллов",
-                text = "Дарим 200 баллов на счет при заказе доставки через приложение",
-                photo = R.drawable.orion_svj,
-                data = "11 сентября",
-                newNotification = true
-            ),
-            Notification(
-                titleText = "Дарим 3000 бонусов!",
-                text = "Дарим 3000 бонусов за ваш первый заказ через доставку",
-                photo = R.drawable.orion_svj,
-                data = "Сегодня",
-                newNotification = true
-            ),
 
-            )
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewNotification)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerViewNotification)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = NotificationAdapter(notificationList, this)
 
         checkAndRequestNotificationPermission()
-
-
     }
+
     private fun areNotificationsEnabled(): Boolean {
         val manager = NotificationManagerCompat.from(this)
         return manager.areNotificationsEnabled()
@@ -136,9 +86,9 @@ class NotificationsActvity : AppCompatActivity() {
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
-                Toast.makeText(this, "Уведомления включены", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.notificationEnabled), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Уведомления отключены", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.notificationNotEnabled), Toast.LENGTH_SHORT).show()
             }
         }
 

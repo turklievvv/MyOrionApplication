@@ -30,10 +30,10 @@
             android:name=".RateRestoranActivity"
             android:exported="false" />
         <activity
-            android:name=".PayStories.PayStoryActivity"
+            android:name=".payStories.PayStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Notifications.NotificationsActvity"
+            android:name=".notifications.NotificationsActvity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
@@ -42,7 +42,7 @@
             android:name=".QRCodeActivity"
             android:exported="false" />
         <activity
-            android:name=".GalvnoeMenuActivity"
+            android:name=".MainMenuActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrationActivity"
@@ -51,7 +51,7 @@
             android:name=".SmsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".EnterPhoneNumberActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

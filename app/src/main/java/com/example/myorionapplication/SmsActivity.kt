@@ -24,8 +24,7 @@ class SmsActivity : AppCompatActivity() {
     private lateinit var number: TextView
     private lateinit var codeVerification: TextInputEditText
 
-    private var phoneNumber: String = ""
-    private var countDownTimer: CountDownTimer? = null
+    private lateinit var phoneNumber: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +36,7 @@ class SmsActivity : AppCompatActivity() {
             insets
         }
 
-        phoneNumber = intent.getStringExtra(PHONE_NUMBER) ?: ""
+        phoneNumber = intent.getStringExtra(PHONE_NUMBER).orEmpty()
 
         timerText = findViewById(R.id.timerText)
         resendButton = findViewById(R.id.resendButton)
@@ -53,36 +52,28 @@ class SmsActivity : AppCompatActivity() {
             startCountdown()
         }
 
-        findViewById<MaterialButton>(R.id.backButton).setOnClickListener {
-            finish()
-        }
-
         codeVerification.doOnTextChanged { text, _, _, _ ->
             if (text?.length == 4) {
-                startActivity(RegistrationActivity.getIntent(this, phoneNumber))
+                startActivity(RegistrationActivity.getIntent(this, number.toString()))
                 finish()
             }
         }
 
-
+        findViewById<MaterialButton>(R.id.backButton).setOnClickListener {
+            finish()
+        }
     }
 
-    private fun startCountdown(){
-        lifecycleScope.startCountDownTimer(
-            startTime = 60_000L,
-            period = 1000L,
-            start = {
-                resendButton.isVisible = false
-            },
-            tick = { time ->
-                val secondsLeft = time / 1000
-                timerText.text = "Отправить повторно через ${secondsLeft}s"
-            },
-            end = {
-                resendButton.isVisible = true
-                timerText.text = ""
-            }
-        )
+    private fun startCountdown() {
+        lifecycleScope.startCountDownTimer(startTime = 60_000L, period = 1000L, start = {
+            resendButton.isVisible = false
+        }, tick = { time ->
+            val secondsLeft = time / 1000
+            timerText.text = getString(R.string.timerText,secondsLeft)
+        }, end = {
+            resendButton.isVisible = true
+            timerText.text = ""
+        })
     }
 
 

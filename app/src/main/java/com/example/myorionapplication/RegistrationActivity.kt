@@ -1,5 +1,6 @@
 package com.example.myorionapplication
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -21,17 +22,19 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.util.Calendar
+import androidx.core.graphics.toColorInt
 
 class RegistrationActivity : AppCompatActivity() {
 
-    private lateinit var nameEditText: TextInputEditText
     private lateinit var firstNameEditText: TextInputEditText
+    private lateinit var lastNameEditText: TextInputEditText
     private lateinit var birthEditText: TextInputEditText
-    private lateinit var radioGroup: RadioGroup
-    private lateinit var editText: List<TextInputEditText>
+    private lateinit var radioGroupRegistration: RadioGroup
+    private lateinit var editTextRegistration: List<TextInputEditText>
     private lateinit var phoneNumber: String
-    private lateinit var button: Button
+    private lateinit var nextButton: Button
 
+    @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,62 +45,58 @@ class RegistrationActivity : AppCompatActivity() {
             insets
         }
         phoneNumber = intent.getStringExtra("phoneNumber").toString().orEmpty()
-        button = findViewById<MaterialButton>(R.id.nextButton)
-        nameEditText = findViewById<TextInputEditText>(R.id.name)
-        firstNameEditText = findViewById<TextInputEditText>(R.id.firstName)
+        nextButton = findViewById<MaterialButton>(R.id.nextButton)
+        firstNameEditText = findViewById<TextInputEditText>(R.id.name)
+        lastNameEditText = findViewById<TextInputEditText>(R.id.firstName)
         birthEditText = findViewById<TextInputEditText>(R.id.birthDate)
-        radioGroup = findViewById<RadioGroup>(R.id.radioGroupRegistration)
-        button.isClickable = false
-        button.isFocusable = false
-        button.setOnClickListener {
+        radioGroupRegistration = findViewById<RadioGroup>(R.id.radioGroupRegistration)
+
+        nextButton.isClickable = false
+        nextButton.isFocusable = false
+
+        nextButton.setOnClickListener {
             var hasError = false
 
-            if (firstNameEditText.text.toString().isBlank()) {
+            if (lastNameEditText.text.toString().isBlank()) {
                 findViewById<TextInputLayout>(R.id.FirstNameLayout).error =
                     getString(R.string.editTextErrorText)
                 hasError = true
             }
-
-            if (nameEditText.text.toString().isBlank()) {
+            if (firstNameEditText.text.toString().isBlank()) {
                 findViewById<TextInputLayout>(R.id.nameLayout).error =
                     getString(R.string.editTextErrorText)
                 hasError = true
             }
-
             if (birthEditText.text.toString().isBlank()) {
                 findViewById<TextInputLayout>(R.id.BirthDateLayout).error =
                     getString(R.string.editTextErrorText)
                 hasError = true
             }
 
-
             if (!hasError) {
-                if (radioGroup.checkedRadioButtonId == -1) {
-                    Toast.makeText(this, "Выберите пол", Toast.LENGTH_SHORT).show()
+                if (radioGroupRegistration.checkedRadioButtonId == -1) {
+                    Toast.makeText(this, getString(R.string.chooseGender), Toast.LENGTH_SHORT).show()
                 } else {
-                    val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+                    val selectedRadioButtonId = radioGroupRegistration.checkedRadioButtonId
                     val radioButton = findViewById<RadioButton>(selectedRadioButtonId)
 
                     startActivity(
-                        GalvnoeMenuActivity.getIntent(
+                        MainMenuActivity.getIntent(
                             this,
                             phoneNumber,
-                            nameEditText.text.toString(),
                             firstNameEditText.text.toString(),
+                            lastNameEditText.text.toString(),
                             birthEditText.text.toString(),
                             radioButton.text.toString()
                         )
-
                     )
                     finish()
                 }
             }
         }
 
-
-
-        button.setBackgroundColor(Color.GRAY)
-        editText = listOf(nameEditText, firstNameEditText, birthEditText)
+        nextButton.setBackgroundColor(Color.GRAY)
+        editTextRegistration = listOf(firstNameEditText, lastNameEditText, birthEditText)
 
         birthEditText.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -115,56 +114,42 @@ class RegistrationActivity : AppCompatActivity() {
             )
             datePickerDialog.show()
         }
-        val textWatcher = object : TextWatcher {
-            override fun beforeTextChanged(
-                s: CharSequence?, start: Int, count: Int, after: Int
-            ) {
-            }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                checkFormState()
-            }
+        radioGroupRegistration.setOnCheckedChangeListener { _, _ -> checkFormState() }
 
-            override fun afterTextChanged(s: Editable?) {}
-        }
-
-
-        nameEditText.addTextChangedListener(textWatcher)
-        firstNameEditText.addTextChangedListener(textWatcher)
-        radioGroup.setOnCheckedChangeListener { _, _ -> checkFormState() }
-
-        firstNameEditText.doOnTextChanged { _, _, _, _ ->
+        lastNameEditText.doOnTextChanged { _, _, _, _ ->
+            checkFormState()
             findViewById<TextInputLayout>(R.id.FirstNameLayout).error = null
         }
 
-        nameEditText.doOnTextChanged { _, _, _, _ ->
+        firstNameEditText.doOnTextChanged { _, _, _, _ ->
+            checkFormState()
             findViewById<TextInputLayout>(R.id.nameLayout).error = null
         }
 
         birthEditText.doOnTextChanged { _, _, _, _ ->
             findViewById<TextInputLayout>(R.id.BirthDateLayout).error = null
         }
-
-
     }
 
     private fun checkFormState() {
-
-        val allFieldsFilled = editText.all { it.text.toString().trim().isNotEmpty() }
-        val isRadioSelected = radioGroup.checkedRadioButtonId != -1
+        val allFieldsFilled = editTextRegistration.all { it.text.toString().trim().isNotEmpty() }
+        val isRadioSelected = radioGroupRegistration.checkedRadioButtonId != -1
         val enableButton = allFieldsFilled && isRadioSelected
-        button.isEnabled = enableButton
-        button.isClickable = enableButton
-        button.isFocusable = enableButton
-        button.setBackgroundColor(if (enableButton) Color.parseColor("#FF5722") else Color.GRAY)
+
+        nextButton.isEnabled = enableButton
+        nextButton.isClickable = enableButton
+        nextButton.isFocusable = enableButton
+        nextButton.setBackgroundColor(if (enableButton) getColor(R.color.orange) else getColor(R.color.gray))
     }
 
     companion object {
-        const val PHONE_NUMBER = "phoneNumber"
-        fun getIntent(context: Context, phoneNumber: String) =
-            Intent(context, RegistrationActivity::class.java).apply {
+        private const val PHONE_NUMBER = "phoneNumber"
+        fun getIntent(context: Context, phoneNumber: String): Intent {
+            return Intent(context, RegistrationActivity::class.java).apply {
                 putExtra(PHONE_NUMBER, phoneNumber)
 
             }
+        }
     }
 }
